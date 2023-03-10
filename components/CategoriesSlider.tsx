@@ -40,8 +40,8 @@ const CategoriesSlider: React.FC<CategoriesSliderProps> = ({ slidesPerView, endp
           {sectionTitle}
         </Typography>
         <Swiper slidesPerView={slidesPerView} modules={[Navigation]}>
-          {images?.map(({ image, name, sale_percentage }) => (
-            <SwiperSlide>
+          {images?.map(({ image, name, sale_percentage }, index) => (
+            <SwiperSlide key={index}>
               <Box
                 sx={{
                   display: "flex",

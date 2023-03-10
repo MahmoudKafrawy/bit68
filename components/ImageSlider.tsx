@@ -34,8 +34,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slidesPerView, endpoint, heig
           <CircularProgress />
         </Container>
       ) : (
-        images?.map(({ image }) => (
-          <SwiperSlide>
+        images?.map(({ image }, index) => (
+          <SwiperSlide key={index}>
             <Box sx={{ position: "relative", height: `min(45vw, ${height}px)` }}>
               <Image src={image} fill alt="" style={{ objectFit: "cover" }} />
             </Box>
