@@ -5,12 +5,11 @@ import { useEffect, useState } from "react";
 import variables from "../styles/variables.module.scss";
 
 interface ItemsSliderProps {
-  slidesPerView: number;
   endpoint: string;
   height: number;
   sectionTitle: string;
 }
-const ItemsSlider: React.FC<ItemsSliderProps> = ({ slidesPerView, endpoint, height, sectionTitle }) => {
+const ItemsSlider: React.FC<ItemsSliderProps> = ({ endpoint, height, sectionTitle }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -22,11 +21,13 @@ const ItemsSlider: React.FC<ItemsSliderProps> = ({ slidesPerView, endpoint, heig
   };
 
   useEffect(() => {
-    getData();
+    try {
+      getData();
+    } catch (error) {}
   }, []);
 
   return (
-    <Container>
+    <Container sx={{ height: `${height}px` }}>
       <Typography sx={{ marginBottom: "24px" }} fontWeight="bold" color={variables.primaryColor} fontSize={"30px"}>
         {sectionTitle}
       </Typography>

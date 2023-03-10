@@ -27,7 +27,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slidesPerView, endpoint, heig
   };
 
   useEffect(() => {
-    getData();
+    try {
+      getData();
+    } catch (error) {}
   }, []);
 
   return (

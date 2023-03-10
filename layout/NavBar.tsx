@@ -1,5 +1,5 @@
 import { AccountCircleOutlined, Search, ShoppingCart } from "@mui/icons-material";
-import { Box, Container, Grid, InputAdornment, Stack, TextField } from "@mui/material";
+import { Box, Container, Grid, IconButton, InputAdornment, Stack, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import variables from "../styles/variables.module.scss";
@@ -27,14 +27,16 @@ const NavBar = () => {
               <Typography fontSize="16px">Store Locator</Typography>
             </Stack>
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={7}>
             <TextField
               fullWidth
               placeholder="Search"
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <Search />
+                    <IconButton>
+                      <Search />
+                    </IconButton>
                   </InputAdornment>
                 ),
               }}

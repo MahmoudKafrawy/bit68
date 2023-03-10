@@ -19,18 +19,8 @@ const Home: NextPage = () => {
         height={430}
         sectionTitle="Popular Brands"
       />
-      <ItemsSlider
-        slidesPerView={4}
-        endpoint="https://api-task.bit68.com/en/api/items/"
-        height={400}
-        sectionTitle="Featured items"
-      />
-      <ItemsSlider
-        slidesPerView={4}
-        endpoint="https://api-task.bit68.com/en/api/items/"
-        height={400}
-        sectionTitle="Most Viewed items"
-      />
+      <ItemsSlider endpoint="https://api-task.bit68.com/en/api/items/" height={400} sectionTitle="Featured items" />
+      <ItemsSlider endpoint="https://api-task.bit68.com/en/api/items/" height={400} sectionTitle="Most Viewed items" />
     </div>
   );
 };

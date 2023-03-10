@@ -28,7 +28,9 @@ const CategoriesSlider: React.FC<CategoriesSliderProps> = ({ slidesPerView, endp
   };
 
   useEffect(() => {
-    getData();
+    try {
+      getData();
+    } catch (error) {}
   }, []);
 
   return loading ? (
