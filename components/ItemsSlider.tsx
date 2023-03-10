@@ -39,8 +39,8 @@ const ItemsSlider: React.FC<ItemsSliderProps> = ({ endpoint, height, sectionTitl
       </Typography>
       <Stack direction="row" sx={{ overflowX: "scroll" }}>
         {products.map(({ ...product }: any, index) => (
-          <Box sx={{ mx: "50px" }}>
-            <ItemCard key={index} {...product} />
+          <Box sx={{ mx: "50px" }} key={index}>
+            <ItemCard {...product} />
           </Box>
         ))}
       </Stack>
