@@ -7,10 +7,16 @@ const Home: NextPage = () => {
     <div>
       <ImageSlider slidesPerView={1} endpoint="https://api-task.bit68.com/en/api/slider_image/" height={540} />
       <CategoriesSlider
-        slidesPerView={6}
+        slidesPerView={5}
         endpoint="https://api-task.bit68.com/en/api/categories/"
         height={430}
         sectionTitle="Main Categories"
+      />
+      <CategoriesSlider
+        slidesPerView={5}
+        endpoint="https://api-task.bit68.com/en/api/brands/"
+        height={430}
+        sectionTitle="Popular Brands"
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Stack } from "@mui/material";
+import { Box, Container, Grid, Stack, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import variables from "../styles/variables.module.scss";
 
@@ -20,12 +20,14 @@ const NavBar = () => {
       <OffersNavBar />
       <Container>
         <Grid container justifyContent="space-between" alignItems="center" sx={{ height: "104px" }}>
-          <Grid item>logo</Grid>
-          <Grid item>search</Grid>
+          <Grid item>Store Locator</Grid>
+          <Grid item>
+            <TextField fullWidth />
+          </Grid>
           <Grid item>icons</Grid>
         </Grid>
       </Container>
-      <Box sx={{ backgroundColor: variables.blackColor, height: "45px" }}>
+      <Box sx={{ backgroundColor: variables.blackColor, height: "45px", display: "flex", alignItems: "center" }}>
         <Container sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
           <Stack direction="row" spacing={"56px"}>
             {categoriesLinks.map((link) => (

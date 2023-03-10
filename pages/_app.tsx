@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import Footer from "../layout/Footer";
 import NavBar from "../layout/NavBar";
 import "../styles/globals.css";
 
@@ -7,6 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <NavBar />
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 }

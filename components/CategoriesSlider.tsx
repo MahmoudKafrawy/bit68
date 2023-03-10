@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Container, Typography } from "@mui/material";
+import { Box, CircularProgress, Container, Stack, Typography } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -6,6 +6,7 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
+import variables from "../styles/variables.module.scss";
 
 interface CategoriesSliderProps {
   slidesPerView: number;
@@ -29,18 +30,44 @@ const CategoriesSlider: React.FC<CategoriesSliderProps> = ({ slidesPerView, endp
   }, []);
 
   return loading ? (
-    <CircularProgress />
+    <Container sx={{ height: `${height}px`, display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <CircularProgress />
+    </Container>
   ) : (
     <Box sx={{ height: `${height}px`, paddingTop: "68px" }}>
       <Container>
-        <Typography sx={{ marginBottom: "24px" }} fontWeight="bold">
+        <Typography sx={{ marginBottom: "24px" }} fontWeight="bold" color={variables.primaryColor} fontSize={"30px"}>
           {sectionTitle}
         </Typography>
         <Swiper slidesPerView={slidesPerView} modules={[Navigation]}>
-          {images?.map(({ image, name }) => (
+          {images?.map(({ image, name, sale_percentage }) => (
             <SwiperSlide>
-              <Box sx={{ position: "relative", height: "140px" }}>
-                <Image src={image} alt="" width={140} height={140} />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                }}
+              >
+                <Stack>
+                  <Box
+                    sx={{
+                      backgroundColor: variables.primaryColor,
+                      borderRadius: "50%",
+                      width: "140px",
+                      height: "140px",
+                      position: "relative",
+                    }}
+                  >
+                    <Image src={image} alt="" width={140} height={140} style={{ objectFit: "none" }} />
+                  </Box>
+                  <Typography textAlign="center" fontWeight="bold" fontSize="20px" sx={{ marginTop: "17px" }}>
+                    {name}
+                  </Typography>
+                  <Typography textAlign="center" fontWeight="bold" fontSize="20px" sx={{ marginTop: "17px" }}>
+                    up to{sale_percentage}%
+                  </Typography>
+                </Stack>
               </Box>
             </SwiperSlide>
           ))}

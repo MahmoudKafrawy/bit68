@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Container } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -28,13 +28,15 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slidesPerView, endpoint, heig
   }, []);
 
   return (
-    <Swiper slidesPerView={slidesPerView} modules={[Navigation]}>
+    <Swiper slidesPerView={slidesPerView} modules={[Navigation]} watchSlidesProgress>
       {loading ? (
-        <CircularProgress />
+        <Container sx={{ height: `${height}px`, display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <CircularProgress />
+        </Container>
       ) : (
         images?.map(({ image }) => (
           <SwiperSlide>
-            <Box sx={{ position: "relative", height: `${height}px` }}>
+            <Box sx={{ position: "relative", height: `min(45vw, ${height}px)` }}>
               <Image src={image} fill alt="" style={{ objectFit: "cover" }} />
             </Box>
           </SwiperSlide>
