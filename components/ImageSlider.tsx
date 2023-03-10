@@ -2,10 +2,13 @@ import { Box, CircularProgress, Container } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Navigation } from "swiper";
+import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+
+SwiperCore.use([Navigation, Pagination]);
 
 interface ImageSliderProps {
   slidesPerView: number;
@@ -28,7 +31,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slidesPerView, endpoint, heig
   }, []);
 
   return (
-    <Swiper slidesPerView={slidesPerView} modules={[Navigation]} watchSlidesProgress>
+    <Swiper slidesPerView={slidesPerView} modules={[Navigation]} navigation pagination>
       {loading ? (
         <Container sx={{ height: `${height}px`, display: "flex", justifyContent: "center", alignItems: "center" }}>
           <CircularProgress />

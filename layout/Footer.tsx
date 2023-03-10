@@ -1,5 +1,6 @@
 import { Box, Container, Divider, Grid, Stack, Typography } from "@mui/material";
 import variables from "../styles/variables.module.scss";
+
 const footerLinksOne = [
   { title: "Active Trending", isMain: true },
   { title: "Men" },

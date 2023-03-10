@@ -1,7 +1,8 @@
-import { Box, Container, Grid, Stack, TextField } from "@mui/material";
+import { AccountCircleOutlined, Search, ShoppingCart } from "@mui/icons-material";
+import { Box, Container, Grid, InputAdornment, Stack, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
 import variables from "../styles/variables.module.scss";
-
 const categoriesLinks = [
   { href: "", title: "Top Deals" },
   { href: "", title: "Deals of the day" },
@@ -20,11 +21,32 @@ const NavBar = () => {
       <OffersNavBar />
       <Container>
         <Grid container justifyContent="space-between" alignItems="center" sx={{ height: "104px" }}>
-          <Grid item>Store Locator</Grid>
           <Grid item>
-            <TextField fullWidth />
+            <Stack direction="row" spacing={1}>
+              <Image src="/logo.png" height={24} width={24} alt="logo" />
+              <Typography fontSize="16px">Store Locator</Typography>
+            </Stack>
           </Grid>
-          <Grid item>icons</Grid>
+          <Grid item md={6}>
+            <TextField
+              fullWidth
+              placeholder="Search"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <Stack spacing={2} direction="row">
+              <Typography color={variables.primaryColor}>العربية</Typography>
+              <AccountCircleOutlined />
+              <ShoppingCart />
+            </Stack>
+          </Grid>
         </Grid>
       </Container>
       <Box sx={{ backgroundColor: variables.blackColor, height: "45px", display: "flex", alignItems: "center" }}>

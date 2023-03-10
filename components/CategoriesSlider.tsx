@@ -2,12 +2,14 @@ import { Box, CircularProgress, Container, Stack, Typography } from "@mui/materi
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Navigation } from "swiper";
+import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
 import variables from "../styles/variables.module.scss";
 
+SwiperCore.use([Navigation, Pagination]);
 interface CategoriesSliderProps {
   slidesPerView: number;
   endpoint: string;
@@ -39,7 +41,7 @@ const CategoriesSlider: React.FC<CategoriesSliderProps> = ({ slidesPerView, endp
         <Typography sx={{ marginBottom: "24px" }} fontWeight="bold" color={variables.primaryColor} fontSize={"30px"}>
           {sectionTitle}
         </Typography>
-        <Swiper slidesPerView={slidesPerView} modules={[Navigation]}>
+        <Swiper slidesPerView={slidesPerView} modules={[Navigation]} navigation>
           {images?.map(({ image, name, sale_percentage }, index) => (
             <SwiperSlide key={index}>
               <Box
