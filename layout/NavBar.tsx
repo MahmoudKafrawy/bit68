@@ -1,4 +1,4 @@
-import { AccountCircleOutlined, Search, ShoppingCart } from "@mui/icons-material";
+import { AccountCircleOutlined, Menu, Search, ShoppingCart } from "@mui/icons-material";
 import { Box, Container, Grid, IconButton, InputAdornment, Stack, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
@@ -13,21 +13,37 @@ const categoriesLinks = [
   { href: "", title: "Brands" },
   { href: "", title: "Sports" },
   { href: "", title: "Accessories" },
-  { href: "", title: "Sale" },
+  { href: "", title: "Sale", highlighted: true },
 ];
 const NavBar = () => {
   return (
     <Box>
       <OffersNavBar />
       <Container>
-        <Grid container justifyContent="space-between" alignItems="center" sx={{ height: "104px" }}>
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ height: { xs: "140px", lg: "104px" } }}
+        >
           <Grid item>
-            <Stack direction="row" spacing={1}>
+            <Stack direction="row" spacing={1} sx={{ display: { xs: "none", lg: "flex" } }}>
               <Image src="/logo.png" height={24} width={24} alt="logo" />
               <Typography fontSize="16px">Store Locator</Typography>
             </Stack>
           </Grid>
-          <Grid item md={7}>
+          <Grid item sx={{ display: { xs: "unset", lg: "none" }, width: "100%" }}>
+            <Stack spacing={2} direction="row" justifyContent="space-between">
+              <Box>
+                <Menu />
+              </Box>
+              <Stack spacing={2} direction="row">
+                <AccountCircleOutlined />
+                <ShoppingCart />
+              </Stack>
+            </Stack>
+          </Grid>
+          <Grid item xs={12} lg={7}>
             <TextField
               fullWidth
               placeholder="Search"
@@ -42,7 +58,7 @@ const NavBar = () => {
               }}
             />
           </Grid>
-          <Grid item>
+          <Grid item sx={{ display: { xs: "none", lg: "unset" } }}>
             <Stack spacing={2} direction="row">
               <Typography color={variables.primaryColor}>العربية</Typography>
               <AccountCircleOutlined />
@@ -51,11 +67,22 @@ const NavBar = () => {
           </Grid>
         </Grid>
       </Container>
-      <Box sx={{ backgroundColor: variables.blackColor, height: "45px", display: "flex", alignItems: "center" }}>
+      <Box
+        sx={{
+          backgroundColor: variables.blackColor,
+          height: "45px",
+          display: { xs: "none", lg: "flex" },
+          alignItems: "center",
+        }}
+      >
         <Container sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
           <Stack direction="row" spacing={"56px"}>
             {categoriesLinks.map((link) => (
-              <Typography key={link.href} color={variables.textWhite} fontSize="16px">
+              <Typography
+                key={link.href}
+                color={link.highlighted ? variables.highlightedText : variables.textWhite}
+                fontSize="16px"
+              >
                 {link.title}
               </Typography>
             ))}
@@ -72,7 +99,7 @@ export const OffersNavBar = () => {
   return (
     <Box
       sx={{
-        height: "45px",
+        height: { xs: "32px", md: "45px" },
         backgroundColor: variables.primaryColor,
         display: "flex",
         justifyContent: "center",

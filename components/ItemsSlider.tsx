@@ -1,8 +1,9 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import variables from "../styles/variables.module.scss";
+import { toPrice } from "../utils/toPrice";
 
 interface ItemsSliderProps {
   endpoint: string;
@@ -28,12 +29,19 @@ const ItemsSlider: React.FC<ItemsSliderProps> = ({ endpoint, height, sectionTitl
 
   return (
     <Container sx={{ height: `${height}px` }}>
-      <Typography sx={{ marginBottom: "24px" }} fontWeight="bold" color={variables.primaryColor} fontSize={"30px"}>
+      <Typography
+        sx={{ marginBottom: "24px" }}
+        fontWeight="bold"
+        color={variables.primaryColor}
+        fontSize={{ xs: "14px", lg: "30px" }}
+      >
         {sectionTitle}
       </Typography>
-      <Stack direction="row">
+      <Stack direction="row" sx={{ overflowX: "scroll" }}>
         {products.map(({ ...product }: any, index) => (
-          <ItemCard key={index} {...product} />
+          <Box sx={{ mx: "50px" }}>
+            <ItemCard key={index} {...product} />
+          </Box>
         ))}
       </Stack>
     </Container>
@@ -51,12 +59,12 @@ export const ItemCard = (props: any) => {
       </Typography>
       {props.price_before_sale == props.price_after_sale ? (
         <Typography fontSize="28px" color={variables.primaryColor} fontWeight="bold">
-          EGP {props.price_before_sale}
+          {toPrice(props.price_after_sale, "EGP")}
         </Typography>
       ) : (
         <Stack direction="row" alignItems="baseline">
           <Typography fontSize="28px" color={variables.secondaryColor} fontWeight="bold">
-            EGP {props.price_after_sale}
+            {toPrice(props.price_after_sale, "EGP")}
           </Typography>
           <Typography color={variables.secondaryColor} fontSize="16px" fontWeight="bold">
             save {props.price_before_sale - props.price_after_sale}

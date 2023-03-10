@@ -49,12 +49,21 @@ export const FooterLinks: React.FC<FooterLinksProps> = ({ links }) => {
         {links.map(({ title, isMain }) => (
           <>
             {isMain && (
-              <Typography fontSize="22px" fontWeight="bold" sx={{ marginBottom: "22px" }} color={variables.blackText}>
+              <Typography
+                fontSize={{ xs: "18px", lg: "22px" }}
+                fontWeight="bold"
+                sx={{ marginBottom: "22px" }}
+                color={variables.blackText}
+              >
                 {title}
               </Typography>
             )}
             {!isMain && (
-              <Typography fontSize="16px" color={variables.blackText} sx={{ marginBottom: "14px" }}>
+              <Typography
+                fontSize={{ xs: "14px", lg: "16px" }}
+                color={variables.blackText}
+                sx={{ marginBottom: "14px" }}
+              >
                 {title}
               </Typography>
             )}

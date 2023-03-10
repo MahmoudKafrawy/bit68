@@ -3,6 +3,7 @@ $text-white: #fff;
 $secondary-color: #ba0829;
 $black: #121212;
 $black-text: #2e2e2e;
+$highlighted-text: #ffd800;
 
 :export {
   primaryColor: $primary-color;
@@ -10,4 +11,5 @@ $black-text: #2e2e2e;
   secondaryColor: $secondary-color;
   blackColor: $black;
   blackText: $black-text;
+  highlightedText: $highlighted-text;
 }

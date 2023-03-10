@@ -38,9 +38,14 @@ const CategoriesSlider: React.FC<CategoriesSliderProps> = ({ slidesPerView, endp
       <CircularProgress />
     </Container>
   ) : (
-    <Box sx={{ height: `${height}px`, paddingTop: "68px" }}>
+    <Box sx={{ marginTop: "60px", marginBottom: "60px" }}>
       <Container>
-        <Typography sx={{ marginBottom: "24px" }} fontWeight="bold" color={variables.primaryColor} fontSize={"30px"}>
+        <Typography
+          sx={{ marginBottom: "24px" }}
+          fontWeight="bold"
+          color={variables.primaryColor}
+          fontSize={{ xs: "16px", lg: "30px" }}
+        >
           {sectionTitle}
         </Typography>
         <Swiper slidesPerView={slidesPerView} modules={[Navigation]} navigation>
@@ -56,21 +61,33 @@ const CategoriesSlider: React.FC<CategoriesSliderProps> = ({ slidesPerView, endp
                 <Stack>
                   <Box
                     sx={{
-                      backgroundColor: variables.primaryColor,
+                      backgroundColor: sale_percentage ? variables.primaryColor : undefined,
                       borderRadius: "50%",
-                      width: "140px",
-                      height: "140px",
+                      width: { xs: "80px", lg: "140px" },
+                      height: { xs: "80px", lg: "140px" },
                       position: "relative",
                     }}
                   >
-                    <Image src={image} alt="" width={140} height={140} style={{ objectFit: "none" }} />
+                    <Image src={image} alt="" fill style={{ transform: sale_percentage ? "scale(0.7)" : "unset" }} />
                   </Box>
-                  <Typography textAlign="center" fontWeight="bold" fontSize="20px" sx={{ marginTop: "17px" }}>
+                  <Typography
+                    textAlign="center"
+                    fontWeight="600"
+                    fontSize={{ xs: "14px", lg: "20px" }}
+                    sx={{ marginTop: "17px" }}
+                  >
                     {name}
                   </Typography>
-                  <Typography textAlign="center" fontWeight="bold" fontSize="20px" sx={{ marginTop: "17px" }}>
-                    up to{sale_percentage}%
-                  </Typography>
+                  {sale_percentage && (
+                    <Typography
+                      textAlign="center"
+                      fontWeight="600"
+                      fontSize={{ xs: "14px", lg: "20px" }}
+                      sx={{ marginTop: "17px" }}
+                    >
+                      Up to {sale_percentage}%
+                    </Typography>
+                  )}
                 </Stack>
               </Box>
             </SwiperSlide>
