@@ -39,7 +39,7 @@ const ItemsSlider: React.FC<ItemsSliderProps> = ({ endpoint, height, sectionTitl
       </Typography>
       <Stack direction="row" sx={{ overflowX: "scroll" }}>
         {products.map(({ ...product }: any, index) => (
-          <Box sx={{ mx: "50px" }} key={index}>
+          <Box key={index} sx={{ mx: { xs: "0", lg: "25px" } }}>
             <ItemCard {...product} />
           </Box>
         ))}
@@ -52,8 +52,8 @@ export default ItemsSlider;
 
 export const ItemCard = (props: any) => {
   return (
-    <Stack sx={{ width: "230px" }}>
-      <Image src={props.image} alt="" width={177} height={177} style={{ objectFit: "none" }} />
+    <Stack sx={{ width: "220px" }}>
+      <Image src={props.image} alt="" width={177} height={177} style={{ transform: "scale(0.7)" }} />
       <Typography fontWeight="bold" fontSize="18px" sx={{ marginTop: "16px" }}>
         {props.name}
       </Typography>
